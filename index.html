@@ -6,6 +6,8 @@
     <title>Espresso AI - Il tuo Brand Ambassador AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/b0a647008779c4a1653d9e8633c7c25a?family=Ample+Display" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -32,14 +34,23 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/b0a647008779c4a1653d9e8633c7c25a?family=Ample+Display" rel="stylesheet">
     <style>
         @import url(https://db.onlinewebfonts.com/c/b0a647008779c4a1653d9e8633c7c25a?family=Ample+Display);
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
         .font-ample { font-family: 'Ample Display', sans-serif; }
         .smooth-scroll { scroll-behavior: smooth; }
+        
+        /* Reveal on Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 smooth-scroll">
@@ -57,16 +68,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 bg-coffee-50">
-        <div class="container mx-auto max-w-4xl text-center">
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 bg-coffee-50 reveal active">
+        <div class="container mx-auto max-w-4xl">
             
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Smetti di pagare l'affitto per la tua visibilità. <span class="text-coffee-600">Costruisci il tuo asset globale</span>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight text-left">
+                LA VISIBILITÀ<br>
+                NON SI AFFITTA.<br>
+                <span class="text-coffee-600">SI POSSIEDE.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-                Ogni euro versato a un influencer esterno arricchisce il suo brand, non il tuo. Con Espresso AI, crei un Brand Ambassador 100% tuo, che scala il tuo business aprendoti mercati che prima potevi solo sognare.
+            <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl text-left leading-relaxed">
+                Siamo architetti di identità digitali. Con Espresso AI, crei un Brand Ambassador 100% tuo, che scala il tuo business aprendoti mercati che prima potevi solo sognare.
             </p>
-            <div class="flex justify-center">
+            <div class="flex justify-start">
                 <a href="#contact" class="bg-coffee-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coffee-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Consulenza Gratuita
                 </a>
@@ -75,11 +88,11 @@
     </header>
 
     <!-- Explanation Section -->
-    <section class="py-20 px-4">
+    <section class="py-20 px-4 reveal">
         <div class="container mx-auto max-w-5xl">
             <div class="flex flex-col md:flex-row items-center gap-12 justify-center text-center">
                 <div class="max-w-3xl">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Siamo architetti di identità digitali, pionieri dell'influencer marketing</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 uppercase">SIAMO PIONIERI DELL'INFLUENCER MARKETING</h2>
                     
                     <p class="text-lg text-gray-600 leading-relaxed">
                         Creiamo da zero il Brand Ambassador perfetto per la tua azienda: un influencer generato su misura per te, che incarna i tuoi valori, parla al cuore dei tuoi clienti e lavora esclusivamente per te, 24 ore su 24, 7 giorni su 7.
@@ -92,14 +105,14 @@
     <!-- Why Now Section -->
     <section class="py-20 px-4 bg-gray-50">
         <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Perché scegliere un Brand Ambassador AI adesso?</h2>
                 <div class="w-24 h-1 bg-coffee-500 mx-auto rounded-full"></div>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Benefit 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 100ms;">
                     <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
                         <i class="fa-solid fa-coins"></i>
                     </div>
@@ -110,7 +123,7 @@
                 </div>
 
                 <!-- Benefit 2 (New) -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 200ms;">
                     <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
                         <i class="fa-solid fa-earth-americas"></i>
                     </div>
@@ -121,7 +134,7 @@
                 </div>
 
                 <!-- Benefit 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 300ms;">
                     <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
                         <i class="fa-solid fa-flag"></i>
                     </div>
@@ -132,7 +145,7 @@
                 </div>
 
                 <!-- Benefit 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 400ms;">
                     <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
                         <i class="fa-solid fa-stopwatch"></i>
                     </div>
@@ -143,7 +156,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-center mt-12">
+            <div class="flex justify-center mt-12 reveal">
                 <a href="#contact" class="bg-coffee-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coffee-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Consulenza Gratuita
                 </a>
@@ -152,13 +165,13 @@
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="py-20 px-4 bg-white">
+    <section id="process" class="py-20 px-4 bg-white reveal">
         <div class="container mx-auto max-w-5xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900">Costruzione del tuo Influencer AI: Il Processo</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 reveal">Costruzione del tuo Influencer AI: Il Processo</h2>
             
             <div class="space-y-12">
                 <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 100ms;">
                     <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">1</div>
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">L'Identikit (Strategia)</h3>
@@ -169,7 +182,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 200ms;">
                     <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">2</div>
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">La Genesi (Sviluppo Visivo)</h3>
@@ -180,7 +193,7 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 300ms;">
                     <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">3</div>
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">L'Anima (Tone of Voice & Storytelling)</h3>
@@ -191,7 +204,7 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 400ms;">
                     <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">4</div>
                     <div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Il Debutto (Lancio & Crescita)</h3>
@@ -202,7 +215,7 @@
                 </div>
             </div>
 
-            <div class="flex justify-center mt-12">
+            <div class="flex justify-center mt-12 reveal">
                 <a href="#contact" class="bg-coffee-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coffee-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Consulenza Gratuita
                 </a>
@@ -211,9 +224,9 @@
     </section>
 
     <!-- AI vs Human Section -->
-    <section class="py-20 px-4">
+    <section class="py-20 px-4 reveal">
         <div class="container mx-auto max-w-6xl">
-            <div class="bg-coffee-900 rounded-3xl p-8 md:p-16 text-white overflow-hidden relative shadow-2xl">
+            <div class="bg-coffee-900 rounded-3xl p-8 md:p-16 text-white overflow-hidden relative shadow-2xl reveal">
                 <!-- Decorative Circle -->
                 <div class="absolute -top-20 -right-20 w-80 h-80 bg-coffee-800 rounded-full opacity-50"></div>
 
@@ -225,15 +238,15 @@
                     </div>
                     
                     <div class="grid md:grid-cols-3 gap-8">
-                        <div class="text-center">
-                            <div class="mb-4 text-coffee-300 text-3xl"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="text-center reveal" style="transition-delay: 100ms;">
+                            <div class="mb-4 text-coffee-300 text-3xl"><i class="fa-solid fa-lock"></i></div>
                             <h3 class="text-xl font-bold mb-3">Controllo Totale (Brand Safety)</h3>
                             <p class="text-coffee-100 text-sm leading-relaxed">
                                 Un influencer umano può avere una giornata storta o finire in uno scandalo. Il tuo influencer AI dice esattamente quello che vuoi, come lo vuoi. Zero rischi.
                             </p>
                         </div>
                         
-                        <div class="text-center border-t md:border-t-0 md:border-l border-coffee-800 pt-8 md:pt-0 md:pl-8">
+                        <div class="text-center border-t md:border-t-0 md:border-l border-coffee-800 pt-8 md:pt-0 md:pl-8 reveal" style="transition-delay: 200ms;">
                             <div class="mb-4 text-coffee-300 text-3xl"><i class="fa-solid fa-globe"></i></div>
                             <h3 class="text-xl font-bold mb-3">Onnipresenza</h3>
                             <p class="text-coffee-100 text-sm leading-relaxed">
@@ -241,7 +254,7 @@
                             </p>
                         </div>
 
-                        <div class="text-center border-t md:border-t-0 md:border-l border-coffee-800 pt-8 md:pt-0 md:pl-8">
+                        <div class="text-center border-t md:border-t-0 md:border-l border-coffee-800 pt-8 md:pt-0 md:pl-8 reveal" style="transition-delay: 300ms;">
                             <div class="mb-4 text-coffee-300 text-3xl"><i class="fa-solid fa-chart-line"></i></div>
                             <h3 class="text-xl font-bold mb-3">Evoluzione Costante</h3>
                             <p class="text-coffee-100 text-sm leading-relaxed">
@@ -255,13 +268,13 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-20 px-4 bg-coffee-50">
+    <section class="py-20 px-4 bg-coffee-50 reveal">
         <div class="container mx-auto max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Domande Frequenti (FAQ)</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 reveal">Domande Frequenti (FAQ)</h2>
             
             <div class="space-y-4">
                 <!-- FAQ Item 1 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 100ms;">
                     <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
                         <span class="text-lg font-bold text-gray-900">1. I clienti si fideranno di una persona che non esiste?</span>
                         <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
@@ -274,7 +287,7 @@
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 150ms;">
                     <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
                         <span class="text-lg font-bold text-gray-900">2. Devo gestire io i profili, pubblicare i post e rispondere ai commenti?</span>
                         <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
@@ -287,7 +300,7 @@
                 </div>
 
                 <!-- FAQ Item 3 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 200ms;">
                     <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
                         <span class="text-lg font-bold text-gray-900">3. Di chi è la proprietà dell'Influencer AI una volta creato?</span>
                         <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
@@ -300,7 +313,7 @@
                 </div>
 
                 <!-- FAQ Item 4 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 250ms;">
                     <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
                         <span class="text-lg font-bold text-gray-900">4. Può davvero parlare qualsiasi lingua?</span>
                         <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
@@ -313,7 +326,7 @@
                 </div>
 
                 <!-- FAQ Item 5 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 300ms;">
                     <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
                         <span class="text-lg font-bold text-gray-900">5. Quanto tempo serve per andare online?</span>
                         <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
@@ -326,7 +339,7 @@
                 </div>
 
                 <!-- FAQ Item 6 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 350ms;">
                     <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
                         <span class="text-lg font-bold text-gray-900">6. Costa più o meno di un influencer reale?</span>
                         <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
@@ -342,9 +355,9 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 bg-white">
+    <section id="contact" class="py-20 px-4 bg-white reveal">
         <div class="container mx-auto max-w-2xl">
-            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 border-t-4 border-coffee-600">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 border-t-4 border-coffee-600 reveal" style="transition-delay: 100ms;">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold text-gray-900 mb-4">Inizia la Rivoluzione</h2>
                     <p class="text-gray-600">Compila il form per essere contattato per una consulenza gratuita.</p>
@@ -405,7 +418,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-coffee-900 text-coffee-100 py-12 px-4 border-t border-coffee-800">
+    <footer class="bg-coffee-900 text-coffee-100 py-12 px-4 border-t border-coffee-800 reveal">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3">
                  <!-- SVG Logo Footer -->
@@ -440,7 +453,22 @@
                 icon.style.transform = 'rotate(180deg)';
             }
         }
+
+        // Reveal on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 50; // Reduced to trigger sooner
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
     </script>
 </body>
 </html>
-

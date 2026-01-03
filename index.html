@@ -6,24 +6,24 @@
     <title>Espresso AI - Il tuo Brand Ambassador AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://db.onlinewebfonts.com/c/b0a647008779c4a1653d9e8633c7c25a?family=Ample+Display" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        coffee: {
-                            50: '#fdf8f6',
-                            100: '#f2e8e5',
-                            200: '#eaddd7',
-                            300: '#e0cec7',
-                            400: '#d2bab0',
-                            500: '#a77f72', // Main coffee color
-                            600: '#8a6256',
-                            700: '#6f4e43',
-                            800: '#5c4038', // Dark roast
-                            900: '#4a342e',
+                        brand: {
+                            dark: '#020617',   // Rich Black/Slate 950
+                            primary: '#2563eb', // Electric Blue
+                            secondary: '#7c3aed', // Purple
+                            light: '#f8fafc',   // Slate 50
+                            accent: '#5227FF',  // From your request
                         }
                     },
                     fontFamily: {
@@ -36,51 +36,77 @@
     </script>
     <style>
         @import url(https://db.onlinewebfonts.com/c/b0a647008779c4a1653d9e8633c7c25a?family=Ample+Display);
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #ffffff;
+            color: #020617;
+        }
+        
         .font-ample { font-family: 'Ample Display', sans-serif; }
         .smooth-scroll { scroll-behavior: smooth; }
         
-        /* Reveal on Scroll Animations */
-        .reveal {
+        /* Gradient Text Animation (now solid color as requested) */
+        .gradient-title {
+            color: #2563eb; /* Changed from #5227FF to brand-primary (Electric Blue) */
+            display: inline-block;
+        }
+
+        /* Split Text Helper Classes */
+        .split-char {
+            display: inline-block;
+            opacity: 0; /* Hidden initially for animation */
+            transform: translateY(40px); /* Start from below */
+            min-width: 0.3em; /* Fix spacing between letters if needed, mostly for spaces */
+        }
+        
+        /* Ensure spaces are preserved and don't collapse too much */
+        .animate-text span {
+            white-space: pre;
+        }
+
+        /* Fix word breaking */
+        h1, h2, h3, h4, h5, h6, .animate-text {
+            word-break: keep-all; /* Prevent breaking words */
+            overflow-wrap: normal;
+        }
+        .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-white text-gray-800 smooth-scroll">
+<body class="bg-white text-brand-dark smooth-scroll">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/70 backdrop-blur-md z-50 border-b border-coffee-100/50">
+    <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-white/10 transition-all duration-300">
         <div class="container mx-auto px-4 py-2 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <!-- SVG Logo -->
-                <img src="logo.svg" alt="Espresso AI Logo" class="h-16 w-auto">
-                <span class="text-2xl font-bold text-coffee-600 tracking-tight font-ample">Espresso AI</span>
+                <!-- SVG Logo (Forced White) -->
+                <img src="logo.svg" alt="Espresso AI Logo" class="h-16 w-auto brightness-0 invert">
+                <span class="text-2xl font-bold text-white tracking-tight font-ample">Espresso AI</span>
             </div>
-            <a href="#contact" class="hidden md:block bg-coffee-600 text-white px-5 py-1.5 rounded-full hover:bg-coffee-700 transition duration-300 text-sm font-medium shadow-md">Contattaci</a>
+            <a href="#contact" class="hidden md:block bg-brand-primary text-white px-5 py-1.5 rounded-full hover:bg-blue-700 transition duration-300 text-sm font-bold shadow-md hover:shadow-lg hover:scale-105">Contattaci</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 bg-coffee-50 reveal active">
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 bg-brand-light relative overflow-hidden">
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-brand-accent/5 to-transparent -z-10 blur-3xl"></div>
+
         <div class="container mx-auto max-w-4xl">
             
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight text-left">
-                LA VISIBILITÀ<br>
-                NON SI AFFITTA.<br>
-                <span class="text-coffee-600">SI POSSIEDE.</span>
+            <h1 class="text-4xl md:text-7xl font-bold text-brand-dark mb-8 leading-tight text-left font-serif">
+                <div class="animate-text mb-2">LA VISIBILITÀ</div>
+                <div class="animate-text mb-2">NON SI AFFITTA.</div>
+                <div class="gradient-title animate-text">SI POSSIEDE.</div>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl text-left leading-relaxed">
+            <p class="text-xl md:text-2xl text-slate-600 mb-10 max-w-3xl text-left leading-relaxed fade-in-up">
                 Siamo architetti di identità digitali. Con Espresso AI, crei un Brand Ambassador 100% tuo, che scala il tuo business aprendoti mercati che prima potevi solo sognare.
             </p>
-            <div class="flex justify-start">
-                <a href="#contact" class="bg-coffee-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coffee-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <div class="flex justify-start fade-in-up">
+                <a href="#contact" class="bg-brand-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
                     Consulenza Gratuita
                 </a>
             </div>
@@ -88,14 +114,17 @@
     </header>
 
     <!-- Explanation Section -->
-    <section class="py-20 px-4 reveal">
+    <section class="py-20 px-4 bg-white">
         <div class="container mx-auto max-w-5xl">
             <div class="flex flex-col md:flex-row items-center gap-12 justify-center text-center">
-                <div class="max-w-3xl">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900 uppercase">SIAMO PIONIERI DELL'INFLUENCER MARKETING</h2>
+                <div class="max-w-4xl">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 text-brand-dark uppercase font-serif">
+                        <div class="text-brand-primary animate-text mb-2">SIAMO PIONIERI</div>
+                        <div class="animate-text">DELL'INFLUENCER MARKETING</div>
+                    </h2>
                     
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        Creiamo da zero il Brand Ambassador perfetto per la tua azienda: un influencer generato su misura per te, che incarna i tuoi valori, parla al cuore dei tuoi clienti e lavora esclusivamente per te, 24 ore su 24, 7 giorni su 7.
+                    <p class="text-lg text-slate-600 leading-relaxed fade-in-up">
+                        Creiamo da zero il Brand Ambassador su misura per la tua azienda: un influencer che incarna i valori del tuo brand, parla al cuore dei tuoi clienti e lavora esclusivamente per te, 24 ore su 24, 7 giorni su 7, nelle lingue che preferisci.
                     </p>
                 </div>
             </div>
@@ -103,61 +132,61 @@
     </section>
 
     <!-- Why Now Section -->
-    <section class="py-20 px-4 bg-gray-50">
+    <section class="py-20 px-4 bg-slate-50">
         <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Perché scegliere un Brand Ambassador AI adesso?</h2>
-                <div class="w-24 h-1 bg-coffee-500 mx-auto rounded-full"></div>
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-primary mb-4 animate-text">Perché scegliere un Brand Ambassador AI adesso?</h2>
+                <div class="w-24 h-1 bg-brand-primary mx-auto rounded-full"></div>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Benefit 1 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 100ms;">
-                    <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-in-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-brand-primary text-2xl mb-6">
                         <i class="fa-solid fa-coins"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">Costi Abbattuti</h3>
-                    <p class="text-gray-600 leading-relaxed text-sm">
+                    <h3 class="text-xl font-bold mb-3 text-brand-dark">Costi Abbattuti</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
                         Dimentica le fee esorbitanti. Riduci i costi di marketing operativo fino al 70% investendo in un asset proprietario.
                     </p>
                 </div>
 
-                <!-- Benefit 2 (New) -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 200ms;">
-                    <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-in-up">
+                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-brand-accent text-2xl mb-6">
                         <i class="fa-solid fa-earth-americas"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">Scala Globale</h3>
-                    <p class="text-gray-600 leading-relaxed text-sm">
+                    <h3 class="text-xl font-bold mb-3 text-brand-dark">Scala Globale</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
                         Crea un influencer che parla ogni lingua e interagisce con la community in ogni fuso orario, h24.
                     </p>
                 </div>
 
                 <!-- Benefit 3 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 300ms;">
-                    <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-in-up">
+                    <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-brand-primary text-2xl mb-6">
                         <i class="fa-solid fa-flag"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">Opportunità Unica</h3>
-                    <p class="text-gray-600 leading-relaxed text-sm">
+                    <h3 class="text-xl font-bold mb-3 text-brand-dark">Opportunità Unica</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
                         Il mercato è ancora vergine. Sii un pioniere oggi per non dover rincorrere i competitor domani.
                     </p>
                 </div>
 
                 <!-- Benefit 4 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition duration-300 border border-gray-100 reveal" style="transition-delay: 400ms;">
-                    <div class="w-14 h-14 bg-coffee-100 rounded-xl flex items-center justify-center text-coffee-600 text-2xl mb-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 fade-in-up">
+                    <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-brand-accent text-2xl mb-6">
                         <i class="fa-solid fa-stopwatch"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">Rapidità</h3>
-                    <p class="text-gray-600 leading-relaxed text-sm">
+                    <h3 class="text-xl font-bold mb-3 text-brand-dark">Rapidità</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">
                         Costruire un personal brand richiede anni. Noi lanciamo il tuo ambassador in meno di 4 settimane.
                     </p>
                 </div>
             </div>
 
-            <div class="flex justify-center mt-12 reveal">
-                <a href="#contact" class="bg-coffee-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coffee-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <div class="flex justify-center mt-12 fade-in-up">
+                <a href="#contact" class="bg-brand-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Consulenza Gratuita
                 </a>
             </div>
@@ -165,58 +194,58 @@
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="py-20 px-4 bg-white reveal">
+    <section id="process" class="py-20 px-4 bg-white">
         <div class="container mx-auto max-w-5xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900 reveal">Costruzione del tuo Influencer AI: Il Processo</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-brand-primary animate-text">Costruzione del tuo Influencer AI: Il Processo</h2>
             
             <div class="space-y-12">
                 <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 100ms;">
-                    <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">1</div>
+                <div class="flex flex-col md:flex-row gap-8 items-start fade-in-up">
+                    <div class="flex-shrink-0 w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">1</div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">L'Identikit (Strategia)</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <h3 class="text-2xl font-bold text-brand-primary mb-2 animate-text">L'Identikit (Strategia)</h3>
+                        <p class="text-slate-600 leading-relaxed">
                             Non partiamo dalla grafica, ma dal business. Chi è il tuo cliente ideale? Analizziamo il tuo target per definire la personalità, i valori e lo stile estetico che faranno breccia nel loro cuore.
                         </p>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 200ms;">
-                    <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">2</div>
+                <div class="flex flex-col md:flex-row gap-8 items-start fade-in-up">
+                    <div class="flex-shrink-0 w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">2</div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">La Genesi (Sviluppo Visivo)</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <h3 class="text-2xl font-bold text-brand-primary mb-2 animate-text">La Genesi (Sviluppo Visivo)</h3>
+                        <p class="text-slate-600 leading-relaxed">
                             I nostri esperti di IA generativa scolpiscono il volto, il corpo e l'ambiente del tuo ambassador. Creiamo un personaggio iper-realistico, indistinguibile dalla realtà.
                         </p>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 300ms;">
-                    <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">3</div>
+                <div class="flex flex-col md:flex-row gap-8 items-start fade-in-up">
+                    <div class="flex-shrink-0 w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">3</div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">L'Anima (Tone of Voice & Storytelling)</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <h3 class="text-2xl font-bold text-brand-primary mb-2 animate-text">L'Anima (Tone of Voice & Storytelling)</h3>
+                        <p class="text-slate-600 leading-relaxed">
                             Un bel viso non basta. Diamo al tuo influencer una voce, una storia, delle passioni e un modo di parlare unico. Creiamo una narrazione che integri i tuoi prodotti nella sua "vita quotidiana" in modo organico.
                         </p>
                     </div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="flex flex-col md:flex-row gap-8 items-start reveal" style="transition-delay: 400ms;">
-                    <div class="flex-shrink-0 w-12 h-12 bg-coffee-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">4</div>
+                <div class="flex flex-col md:flex-row gap-8 items-start fade-in-up">
+                    <div class="flex-shrink-0 w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">4</div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Il Debutto (Lancio & Crescita)</h3>
-                        <p class="text-gray-600 leading-relaxed">
+                        <h3 class="text-2xl font-bold text-brand-primary mb-2 animate-text">Il Debutto (Lancio & Crescita)</h3>
+                        <p class="text-slate-600 leading-relaxed">
                             Lanciamo i profili social e iniziamo la produzione massiva di contenuti. Gestiamo le interazioni, facciamo crescere la community e trasformiamo i follower in clienti paganti. Tu guardi i risultati, noi gestiamo la tecnologia.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="flex justify-center mt-12 reveal">
-                <a href="#contact" class="bg-coffee-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coffee-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            <div class="flex justify-center mt-12 fade-in-up">
+                <a href="#contact" class="bg-brand-primary text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     Consulenza Gratuita
                 </a>
             </div>
@@ -224,43 +253,38 @@
     </section>
 
     <!-- AI vs Human Section -->
-    <section class="py-20 px-4 reveal">
+    <section class="py-20 px-4 bg-brand-dark text-white">
         <div class="container mx-auto max-w-6xl">
-            <div class="bg-coffee-900 rounded-3xl p-8 md:p-16 text-white overflow-hidden relative shadow-2xl reveal">
-                <!-- Decorative Circle -->
-                <div class="absolute -top-20 -right-20 w-80 h-80 bg-coffee-800 rounded-full opacity-50"></div>
-
-                <div class="relative z-10">
-                    <div class="flex flex-col items-center mb-16 text-3xl md:text-5xl font-bold font-serif leading-tight">
-                        <span class="text-coffee-200">AI INFLUENCER</span>
-                        <span class="text-coffee-500 my-2 text-2xl">VS</span>
-                        <span>INFLUENCER UMANI</span>
+            <div class="relative z-10">
+                <div class="flex flex-col items-center mb-12 text-center">
+                    <h2 class="text-3xl md:text-5xl font-bold font-serif leading-tight animate-text text-white mb-2">AI INFLUENCER</h2>
+                    <div class="text-brand-primary my-2 text-2xl px-4 py-1 font-bold">VS</div>
+                    <h2 class="text-3xl md:text-5xl font-bold font-serif leading-tight animate-text text-slate-400 mt-2">INFLUENCER UMANI</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition fade-in-up">
+                        <div class="mb-4 text-brand-primary text-3xl"><i class="fa-solid fa-lock"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Controllo Totale</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Un influencer umano può avere una giornata storta o finire in uno scandalo. Il tuo influencer AI dice esattamente quello che vuoi, come lo vuoi. Zero rischi.
+                        </p>
                     </div>
                     
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="text-center reveal" style="transition-delay: 100ms;">
-                            <div class="mb-4 text-coffee-300 text-3xl"><i class="fa-solid fa-lock"></i></div>
-                            <h3 class="text-xl font-bold mb-3">Controllo Totale (Brand Safety)</h3>
-                            <p class="text-coffee-100 text-sm leading-relaxed">
-                                Un influencer umano può avere una giornata storta o finire in uno scandalo. Il tuo influencer AI dice esattamente quello che vuoi, come lo vuoi. Zero rischi.
-                            </p>
-                        </div>
-                        
-                        <div class="text-center border-t md:border-t-0 md:border-l border-coffee-800 pt-8 md:pt-0 md:pl-8 reveal" style="transition-delay: 200ms;">
-                            <div class="mb-4 text-coffee-300 text-3xl"><i class="fa-solid fa-globe"></i></div>
-                            <h3 class="text-xl font-bold mb-3">Onnipresenza</h3>
-                            <p class="text-coffee-100 text-sm leading-relaxed">
-                                Può essere contemporaneamente su Instagram a Milano e su TikTok a New York. Non ha limiti fisici, non soffre il jet lag e scala all'infinito.
-                            </p>
-                        </div>
+                    <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition md:mt-8 fade-in-up">
+                        <div class="mb-4 text-brand-accent text-3xl"><i class="fa-solid fa-globe"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Onnipresenza</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Può essere contemporaneamente su Instagram a Milano e su TikTok a New York. Non ha limiti fisici, non soffre il jet lag e scala all'infinito.
+                        </p>
+                    </div>
 
-                        <div class="text-center border-t md:border-t-0 md:border-l border-coffee-800 pt-8 md:pt-0 md:pl-8 reveal" style="transition-delay: 300ms;">
-                            <div class="mb-4 text-coffee-300 text-3xl"><i class="fa-solid fa-chart-line"></i></div>
-                            <h3 class="text-xl font-bold mb-3">Evoluzione Costante</h3>
-                            <p class="text-coffee-100 text-sm leading-relaxed">
-                                Adattiamo look e tono di voce in tempo reale sui dati di vendita. Se il mercato cambia, il tuo influencer cambia con esso, istantaneamente.
-                            </p>
-                        </div>
+                    <div class="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition fade-in-up">
+                        <div class="mb-4 text-brand-primary text-3xl"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Evoluzione Costante</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Adattiamo look e tono di voce in tempo reale sui dati di vendita. Se il mercato cambia, il tuo influencer cambia con esso, istantaneamente.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -268,85 +292,81 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-20 px-4 bg-coffee-50 reveal">
+    <section class="py-20 px-4 bg-slate-50">
         <div class="container mx-auto max-w-3xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 reveal">Domande Frequenti (FAQ)</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-brand-primary animate-text">Domande Frequenti (FAQ)</h2>
             
             <div class="space-y-4">
-                <!-- FAQ Item 1 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 100ms;">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
-                        <span class="text-lg font-bold text-gray-900">1. I clienti si fideranno di una persona che non esiste?</span>
-                        <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
+                <!-- FAQ Items -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in-up">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-brand-dark">1. I clienti si fideranno di una persona che non esiste?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-primary transition-transform duration-300"></i>
                     </button>
                     <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                            I dati dicono di sì. Gli influencer AI come Lil Miquela o Aitana Lopez hanno tassi di engagement (coinvolgimento) spesso superiori a quelli umani. Le persone seguono storie, valori ed estetica, indipendentemente dal fatto che dietro ci sia silicio o carne. Inoltre, l'IA elimina il rischio di scandali personali che potrebbero danneggiare la tua reputazione.
+                        <div class="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+                            I dati dicono di sì. Gli influencer AI come Lil Miquela o Aitana Lopez hanno tassi di engagement (coinvolgimento) spesso superiori a quelli umani. Le persone seguono storie, valori ed estetica, indipendentemente dal fatto che dietro ci sia silicio o carne.
                         </div>
                     </div>
                 </div>
 
-                <!-- FAQ Item 2 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 150ms;">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
-                        <span class="text-lg font-bold text-gray-900">2. Devo gestire io i profili, pubblicare i post e rispondere ai commenti?</span>
-                        <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in-up">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-brand-dark">2. Devo gestire io i profili, pubblicare i post e rispondere ai commenti?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-primary transition-transform duration-300"></i>
                     </button>
                     <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                            Assolutamente no. Il nostro servizio è "Done-For-You" (chiavi in mano). Non ci limitiamo a creare l'immagine: gestiamo interamente i profili social, curiamo le interazioni quotidiane e facciamo crescere la community al posto tuo. Tu approvi la strategia, noi eseguiamo il lavoro sporco per trasformare i follower in clienti.
+                        <div class="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+                            Assolutamente no. Il nostro servizio è "Done-For-You" (chiavi in mano). Tu approvi la strategia, noi eseguiamo il lavoro sporco.
                         </div>
                     </div>
                 </div>
 
-                <!-- FAQ Item 3 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 200ms;">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
-                        <span class="text-lg font-bold text-gray-900">3. Di chi è la proprietà dell'Influencer AI una volta creato?</span>
-                        <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in-up">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-brand-dark">3. Di chi è la proprietà dell'Influencer AI una volta creato?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-primary transition-transform duration-300"></i>
                     </button>
                     <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                            È tuo al 100%. A differenza dell'influencer marketing tradizionale dove "affitti" la visibilità altrui, qui stai costruendo un asset aziendale proprietario. Se un domani decidi di vendere la tua azienda, il valore dell'influencer e della sua audience viene venduto insieme al brand.
+                        <div class="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+                            È tuo al 100%. Qui stai costruendo un asset aziendale proprietario.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- More FAQs kept as requested but updated styles -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in-up">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-brand-dark">4. Può davvero parlare qualsiasi lingua?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+                            Sì. Il tuo Brand Ambassador è nativo in oltre 50 lingue.
                         </div>
                     </div>
                 </div>
 
-                <!-- FAQ Item 4 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 250ms;">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
-                        <span class="text-lg font-bold text-gray-900">4. Può davvero parlare qualsiasi lingua?</span>
-                        <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in-up">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-brand-dark">5. Quanto tempo serve per andare online?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-primary transition-transform duration-300"></i>
                     </button>
                     <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                            Sì. Il tuo Brand Ambassador è nativo in oltre 50 lingue. Possiamo creare un video in italiano per il mercato locale e, cinque minuti dopo, lo stesso video in cinese mandarino o arabo per i tuoi clienti esteri, con un labiale perfetto e un accento locale impeccabile.
+                        <div class="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+                            Siamo veloci. Dalla firma del contratto al primo post pubblicato passano solitamente meno di 4 settimane.
                         </div>
                     </div>
                 </div>
 
-                <!-- FAQ Item 5 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 300ms;">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
-                        <span class="text-lg font-bold text-gray-900">5. Quanto tempo serve per andare online?</span>
-                        <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden fade-in-up">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-slate-50 transition" onclick="toggleFaq(this)">
+                        <span class="text-lg font-bold text-brand-dark">6. Costa più o meno di un influencer reale?</span>
+                        <i class="fa-solid fa-chevron-down text-brand-primary transition-transform duration-300"></i>
                     </button>
                     <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                            Siamo veloci. Dalla firma del contratto al primo post pubblicato passano solitamente meno di 4 settimane. Questo mese serve per la fase di "Genesi": studio del target, definizione dei valori dell'azienda, creazione del personaggio e preparazione di 30 contenuti pronti per il lancio.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 6 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal" style="transition-delay: 350ms;">
-                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none hover:bg-gray-50 transition" onclick="toggleFaq(this)">
-                        <span class="text-lg font-bold text-gray-900">6. Costa più o meno di un influencer reale?</span>
-                        <i class="fa-solid fa-chevron-down text-coffee-600 transition-transform duration-300"></i>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
-                        <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-50">
-                            Decisamente meno, se guardi al ROI. Un influencer umano con 100k follower può chiederti migliaia di euro per un solo post (che sparisce dal feed dopo 24h). Con Espresso AI, investi in un sistema che produce contenuti illimitati e lavora per te 365 giorni l'anno, a una frazione del costo di un team di marketing tradizionale.
+                        <div class="p-6 pt-0 text-slate-600 leading-relaxed border-t border-slate-100">
+                            Decisamente meno, se guardi al ROI. Con Espresso AI, investi in un sistema che produce contenuti illimitati.
                         </div>
                     </div>
                 </div>
@@ -355,61 +375,64 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 bg-white reveal">
+    <section id="contact" class="py-20 px-4 bg-white">
         <div class="container mx-auto max-w-2xl">
-            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-10 border-t-4 border-coffee-600 reveal" style="transition-delay: 100ms;">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-10 border border-slate-100 relative overflow-hidden fade-in-up">
+                <!-- Decorative Border Top -->
+                <div class="absolute top-0 left-0 w-full h-2 bg-brand-primary"></div>
+                
                 <div class="text-center mb-10">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Inizia la Rivoluzione</h2>
-                    <p class="text-gray-600">Compila il form per essere contattato per una consulenza gratuita.</p>
+                    <h2 class="text-3xl font-bold text-brand-primary mb-4 animate-text">Inizia la Rivoluzione</h2>
+                    <p class="text-slate-600">Compila il form per essere contattato per una consulenza gratuita.</p>
                 </div>
 
                 <form class="space-y-6" onsubmit="event.preventDefault(); alert('Grazie! Ti contatteremo presto.');">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Nome</label>
-                            <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-200 outline-none transition" placeholder="Mario">
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Nome</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="Mario">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Cognome</label>
-                            <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-200 outline-none transition" placeholder="Rossi">
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Cognome</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="Rossi">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                        <input type="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-200 outline-none transition" placeholder="mario.rossi@esempio.it">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="mario.rossi@esempio.it">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Numero di Telefono</label>
-                        <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-200 outline-none transition" placeholder="+39 333 1234567">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Numero di Telefono</label>
+                        <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="+39 333 1234567">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-3">Hai un'azienda?</label>
+                        <label class="block text-sm font-medium text-slate-700 mb-3">Hai un'azienda?</label>
                         <div class="flex gap-6">
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="has_company" value="yes" class="w-4 h-4 text-coffee-600 border-gray-300 focus:ring-coffee-500" onchange="toggleCompanyField(true)">
-                                <span class="ml-2 text-gray-700">Sì</span>
+                                <input type="radio" name="has_company" value="yes" class="w-4 h-4 text-brand-primary border-slate-300 focus:ring-brand-primary" onchange="toggleCompanyField(true)">
+                                <span class="ml-2 text-slate-700">Sì</span>
                             </label>
                             <label class="flex items-center cursor-pointer">
-                                <input type="radio" name="has_company" value="no" class="w-4 h-4 text-coffee-600 border-gray-300 focus:ring-coffee-500" onchange="toggleCompanyField(false)" checked>
-                                <span class="ml-2 text-gray-700">No</span>
+                                <input type="radio" name="has_company" value="no" class="w-4 h-4 text-brand-primary border-slate-300 focus:ring-brand-primary" onchange="toggleCompanyField(false)" checked>
+                                <span class="ml-2 text-slate-700">No</span>
                             </label>
                         </div>
                     </div>
 
                     <div id="company-field" class="hidden transition-all duration-300 ease-in-out">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nome dell'Azienda</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-200 outline-none transition" placeholder="La tua Azienda Srl">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Nome dell'Azienda</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="La tua Azienda">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Messaggio</label>
-                        <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-coffee-500 focus:ring-2 focus:ring-coffee-200 outline-none transition" placeholder="Parlaci del tuo progetto..."></textarea>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Messaggio</label>
+                        <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="Parlaci del tuo progetto..."></textarea>
                     </div>
 
-                    <button type="submit" class="w-full bg-coffee-600 text-white font-bold py-4 rounded-lg hover:bg-coffee-700 transition duration-300 shadow-lg mt-4 transform hover:-translate-y-1">
+                    <button type="submit" class="w-full bg-brand-primary text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg mt-4 transform hover:-translate-y-1">
                         Invia Richiesta
                     </button>
                 </form>
@@ -418,20 +441,52 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-coffee-900 text-coffee-100 py-12 px-4 border-t border-coffee-800 reveal">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                 <!-- SVG Logo Footer -->
-                 <img src="logo.svg" alt="Espresso AI Logo" class="h-12 w-auto brightness-0 invert">
-                <span class="text-xl font-bold font-ample">Espresso AI</span>
+    <footer class="bg-black text-white py-12 px-4 border-t border-white/10">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <!-- Logo and Copyright -->
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <div class="flex items-center gap-3">
+                     <!-- SVG Logo Footer -->
+                     <img src="logo.svg" alt="Espresso AI Logo" class="h-12 w-auto brightness-0 invert">
+                    <span class="text-xl font-bold font-ample">Espresso AI</span>
+                </div>
+                <div class="text-sm text-slate-400">
+                    &copy; 2024 Espresso AI. Tutti i diritti riservati.
+                </div>
             </div>
-            <div class="text-sm text-coffee-300">
-                &copy; 2024 Espresso AI. Tutti i diritti riservati.
+
+            <!-- Contacts and Socials -->
+            <div class="flex flex-col items-center md:items-end gap-6">
+                <!-- Contacts -->
+                <div class="flex flex-col md:flex-row gap-6 text-sm text-slate-300">
+                    <a href="tel:+393663568753" class="hover:text-white transition flex items-center gap-2">
+                        <i class="fa-solid fa-phone"></i> +39 366 356 8753
+                    </a>
+                    <a href="mailto:amministrazione@espressoai.it" class="hover:text-white transition flex items-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> amministrazione@espressoai.it
+                    </a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/share/1DPxCH6LDB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-primary transition text-white">
+                        <i class="fa-brands fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="https://www.instagram.com/espressoai.it?igsh=MjluNm8xOGR2ZnU3&utm_source=qr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-primary transition text-white">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/espressoai-it/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-primary transition text-white">
+                        <i class="fa-brands fa-linkedin-in text-lg"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Toggle functions
         function toggleCompanyField(show) {
             const field = document.getElementById('company-field');
             if (show) {
@@ -454,21 +509,89 @@
             }
         }
 
-        // Reveal on Scroll
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 50; // Reduced to trigger sooner
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+        // --- Animations ---
+
+        // 1. Split Text Animation Logic (simulating React SplitText)
+        function initSplitText() {
+            const targets = document.querySelectorAll('.animate-text');
+            
+            targets.forEach(target => {
+                // Get the raw text content, preserving whitespace but trimming excess
+                const text = target.textContent; 
+                
+                // Clear content
+                target.innerHTML = '';
+
+                // Split by words first to keep them together
+                const words = text.split(' ');
+                
+                words.forEach((word, wordIndex) => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.style.display = 'inline-block';
+                    wordSpan.style.whiteSpace = 'nowrap'; // Keep word on one line
+                    
+                    const chars = word.split('');
+                    
+                    chars.forEach(char => {
+                        const charSpan = document.createElement('span');
+                        charSpan.className = 'split-char';
+                        charSpan.textContent = char;
+                        wordSpan.appendChild(charSpan);
+                    });
+
+                    target.appendChild(wordSpan);
+
+                    // Add space after word if it's not the last one
+                    if (wordIndex < words.length - 1) {
+                        const spaceSpan = document.createElement('span');
+                        spaceSpan.className = 'split-char';
+                        spaceSpan.innerHTML = '&nbsp;';
+                        spaceSpan.style.display = 'inline-block';
+                        target.appendChild(spaceSpan);
+                    }
+                });
+
+                // Animate chars
+                gsap.to(target.querySelectorAll('.split-char'), {
+                    scrollTrigger: {
+                        trigger: target,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    stagger: 0.02, // slightly faster stagger
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
+            });
         }
-        window.addEventListener("scroll", reveal);
-        // Trigger once on load
-        reveal();
+
+        // 2. General Fade In Up Logic
+        function initFadeInUp() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            
+            elements.forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // Initialize animations on load
+        window.addEventListener('load', () => {
+            initSplitText();
+            initFadeInUp();
+        });
+
     </script>
 </body>
 </html>

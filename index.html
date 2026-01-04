@@ -427,11 +427,6 @@
                         <input type="text" name="nome_azienda" class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-brand-dark text-white focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="La tua Azienda">
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-2">Messaggio</label>
-                        <textarea name="messaggio" rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 bg-brand-dark text-white focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 outline-none transition" placeholder="Parlaci del tuo progetto..."></textarea>
-                    </div>
-
                     <button type="submit" class="w-full bg-brand-primary text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition duration-300 shadow-lg mt-4 transform hover:-translate-y-1">
                         Invia Richiesta
                     </button>
@@ -608,7 +603,6 @@
             const aziendaRadio = form.querySelector('input[name="has_company"]:checked');
             const haAzienda = aziendaRadio ? aziendaRadio.value : 'no';
             const nomeAzienda = form.querySelector('input[name="nome_azienda"]').value;
-            const messaggio = form.querySelector('textarea[name="messaggio"]').value;
 
             // Validation: Email OR Phone
             if (!email && !telefono) {
@@ -623,8 +617,7 @@
                 email,
                 telefono,
                 ha_azienda: haAzienda,
-                nome_azienda: haAzienda === 'yes' ? nomeAzienda : '',
-                messaggio
+                nome_azienda: haAzienda === 'yes' ? (nomeAzienda || 'null') : 'null'
             };
 
             try {
